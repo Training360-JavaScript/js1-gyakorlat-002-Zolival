@@ -15,3 +15,41 @@ hogy a tömb minden eleme number típusú-e vagy sem
 - `someElementsAreNumbers`: Értéke true/false attól függően, 
 hogy a tömbben van-e number típusú elem vagy sem
 */
+'use strict';
+
+const checker = (array, primitive) => {
+    let object = {}
+    object.exists = exists(array, primitive)
+    object.index = array.indexOf(primitive);
+    object.allElementsAreNumbers = array.every(checkNumber);
+    object.someElementsAreNumbers = array.some(checkNumber);
+    
+    console.log(object)
+    return object
+}
+
+ 
+
+const checkNumber = (v) => {
+    let ret; 
+    if(typeof v === 'number' && v != NaN){ 
+        ret = true 
+    } else { 
+        ret = false 
+    }     
+    return ret
+}
+
+
+const exists = (array, primitive) => {
+    let ret;
+    if(array.indexOf(primitive) >-1 ){
+      ret = true;
+    }else{
+        ret = false;
+    }
+    return ret
+}
+
+console.log('function call from the code:', "checker([11, 22, 33, 44, '44'] , 55)")
+checker([11, 22, 33, 44, '44'] , 55);
